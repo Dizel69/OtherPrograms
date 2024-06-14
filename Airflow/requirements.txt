@@ -1,6 +1,0 @@
-pymssql
-pandas
-sqlalchemy
-gspread
-psycopg2-binary
-openpyxl
