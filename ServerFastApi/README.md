@@ -1,0 +1,5 @@
+1. Запустите run.sh или просто скопируйте данные из него в Power Shell
+
+2. Вводим в консоль пример GET запроса: curl http://127.0.0.1:8000/
+
+3. Вводим в консоль пример POST запроса: curl -X POST "http://127.0.0.1:8000/data" -H "Content-Type: application/json" -d "{\"key\":\"value\"}"
