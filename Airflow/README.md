@@ -1,4 +1,4 @@
-# Data Extraction and Storage Script
+# Описание
 
 Этот проект предназначен для извлечения данных из Google Sheets, их сохранения в базе данных PostgreSQL, работающей в Docker, и записи данных в файл Excel.
 
