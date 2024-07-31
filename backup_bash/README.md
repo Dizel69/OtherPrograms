@@ -31,7 +31,9 @@
 ## Доступ к бэкапам
 
 Проверьте, что директория для бэкапов существует и имеет правильные права доступа:
+    
     sudo mkdir -p /var/backups/postgres
+    
     sudo chown your_user:your_group /var/backups/postgres
 
 ## Добавление BackUp в cron-задачу
