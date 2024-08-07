@@ -1,0 +1,14 @@
+url: "http://server.com"  # URL для мониторинга
+timeout: 5  # Тайм-аут для запроса в секундах
+check_interval: 5  # Интервал проверки в минутах
+
+email:
+  sender: ""  # Email отправителя
+  recipient: ""  # Email получателя
+  smtp_server: ""  # SMTP-сервер
+  smtp_port: 587  # Порт SMTP
+  password: ""  # Пароль от email
+
+telegram:
+  bot_token: ""  # Токен вашего Telegram бота
+  chat_id: ""  # ID чата или пользователя для отправки уведомлений
