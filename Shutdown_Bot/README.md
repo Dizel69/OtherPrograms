@@ -39,6 +39,7 @@
 
     2. Вставьте следующее содержимое в файл:
 
+        
         [Unit]
         
         Description=Telegram бот для выключения системы
@@ -58,6 +59,7 @@
         [Install]
         
         WantedBy=multi-user.target
+
 
     3. Сохраните файл и закройте редактор (Ctrl + X, затем Y и Enter).
 
