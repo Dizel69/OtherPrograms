@@ -40,16 +40,23 @@
     2. Вставьте следующее содержимое в файл:
 
         [Unit]
+        
         Description=Telegram бот для выключения системы
+        
         After=network.target
 
         [Service]
+        
         User=Имя_пользователя
+        
         WorkingDirectory=/home/Имя_пользователя/telegram-shutdown-bot
+        
         ExecStart=/home/Имя_пользователя/telegram-shutdown-bot/myenv/bin/python /home/Имя_пользователя/telegram-shutdown-bot/shutdown_bot.py
+        
         Restart=always
 
         [Install]
+        
         WantedBy=multi-user.target
 
     3. Сохраните файл и закройте редактор (Ctrl + X, затем Y и Enter).
