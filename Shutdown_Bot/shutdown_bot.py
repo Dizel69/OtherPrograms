@@ -4,7 +4,7 @@ import subprocess
 import os
 
 # Токен вашего Telegram-бота
-BOT_TOKEN = '7667070591:AAHy0hrfhKHfNC5OtLGuVz-cEGXZHHl9l9g'
+BOT_TOKEN = 'ваш токен'
 
 # Функция для запуска Python-скрипта напрямую
 async def start_parser(update: Update, context):
