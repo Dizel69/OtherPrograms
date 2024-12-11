@@ -19,6 +19,9 @@
     Установите необходимые библиотеки для работы бота:
 
     pip install python-telegram-bot
+    pip install psutil
+    pip install time
+    pip install platform
 
 4. Настройка бота
     Получение токена Telegram:
@@ -86,6 +89,14 @@
 7. Тестирование бота
     1. Откройте Telegram и найдите своего бота.
     2. Отправьте команду ` /shutdown `, и бот выключит систему.
+
+8. Установка утилит для скриншота
+   
+    sudo apt update
+    sudo apt install imagemagick
+    sudo apt install scrot
+    sudo apt install x11-apps
+
 
 ### Полезные команды
 1. Просмотр статуса сервиса:
