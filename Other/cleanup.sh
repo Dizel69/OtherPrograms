@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Задаём путь к целевой папке
-TARGET_DIR="/home/march/nielsen/wildparser/csv"
+TARGET_DIR="путь до директории"
 
 # Проверяем, существует ли папка
 if [ ! -d "$TARGET_DIR" ]; then
