@@ -29,3 +29,5 @@
 14. ` Docker ` - изучение Docker и DockerCompose;
 
 15. ` HelloWorld ` - GitLab Pipline для деплой и компиляции простой программы по выводу HelloWorld;
+
+16. ` data ` - тут собраны различные данные
