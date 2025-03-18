@@ -39,38 +39,15 @@
 
 5. Настройка автозапуска через ` systemd `
     Чтобы бот автоматически запускался при старте системы:
-    1. Откройте терминал и создайте новый ` systemd ` сервис:
+    1. Откройте терминал и создайте новый ` systemd ` сервис, который лежит на GitHub:
     ```
         sudo nano /etc/systemd/system/shutdown-bot.service
     ```
+    
 
-    2. Вставьте следующее содержимое в файл:
-    ```
-        
-        [Unit]
-        
-        Description=Telegram бот для выключения системы
-        
-        After=network.target
+    2. Сохраните файл и закройте редактор (Ctrl + X, затем Y и Enter).
 
-        [Service]
-        
-        User=Имя_пользователя
-        
-        WorkingDirectory=/home/Имя_пользователя/telegram-shutdown-bot
-        
-        ExecStart=/home/Имя_пользователя/telegram-shutdown-bot/myenv/bin/python /home/Имя_пользователя/telegram-shutdown-bot/shutdown_bot.py
-        
-        Restart=always
-
-        [Install]
-        
-        WantedBy=multi-user.target
-    ```
-
-    3. Сохраните файл и закройте редактор (Ctrl + X, затем Y и Enter).
-
-    4. Перезагрузите systemd и запустите бот:
+    3. Перезагрузите systemd и запустите бот:
     ```
         sudo systemctl daemon-reload
         
