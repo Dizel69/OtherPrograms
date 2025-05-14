@@ -1,0 +1,11 @@
+stages:
+  - build
+
+build_job:
+  stage: build
+  script:
+    - g++ main.cpp -o main
+    - echo "Hi"
+  artifacts:
+    paths:
+      - main
