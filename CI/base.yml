@@ -1,0 +1,52 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to Server
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Клонирование репозитория
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: SpicyPizza/create-envfile@v2.0
+        with:
+          directory: .
+          envkey_DEBUG: false
+          envkey_TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          envkey_BACKEND_URL: ${{ vars.BACKEND_URL }}
+          fail_on_empty: false
+          sort_keys: false
+
+      # 2. Копирование файлов проекта на сервер в проект
+      - name: Copy project to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "."
+          target: "/AromaChat/bot"
+
+      # 3. Сборка Docker-образа и перезапуск контейнера в папке проекта
+      - name: Build and Restart Docker on server
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /AromaChat/bot
+            docker compose down || exit 1
+            docker compose up --build -d || exit 1
+            docker ps || exit 1
+
+      #4. Вывод сообщения об успехе
+      - name: Finish Job
+        run: echo "Deployment completed successfully"
