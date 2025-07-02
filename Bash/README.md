@@ -23,3 +23,15 @@
 ` monitoring_mem.sh ` - поиск процессов, которые потребляют >60% ОЗУ;
 
 ` monitoring_cpu_and_mem.sh ` - поиск процессов, которые потребляют >90% CPU и >60% ОЗУ;
+
+` login-track.sh ` - сбор и сохранение статистики входов пользователей;
+
+` SSH_guard.sh ` - fаализ неудачных SSH-попыток и вывод ТОП-10 IP-адресов;
+
+` system_inspector.sh ` - сбор подробной информации о системе;
+
+` delete_cert-manager.sh ` - полное удаление cert-manager из k8s/k3s;
+
+` backapp_db.sh ` - дамп базы данных PostgreSQL;
+
+` multi_backapp_db ` - дамп баз данных PostgreSQL;
