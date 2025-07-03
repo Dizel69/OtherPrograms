@@ -2,15 +2,15 @@
 
 # === Настройки ===
 
-# Список баз для бэкапа
-DATABASES=("firs" "second" "third")
+# Список баз для бэкапа (можно вписывать любое количество)
+DATABASES=("first_db" "second_db" "third_db" "" "medo_isbu")
 
 # Пользователь PostgreSQL
 DB_USER="postgres"
 export PGPASSWORD="postgres"
 
 # Хост и порт
-DB_HOST="localhost"
+DB_HOST="196.165.123.45"
 DB_PORT="5432"
 
 # Дата
@@ -53,9 +53,8 @@ done
 
 # === Удаление старых бэкапов ===
 
-echo "🔧 $(date +'%F %T') Удаляем backups старше чем ${RETENTION_DAYS} дня..." | tee -a "$LOG_FILE"
-find "$BACKUP_DIR" -type f -name "${DB_NAME}_*.sql.gz" -mtime +$RETENTION_DAYS -print -delete >> "$LOG_FILE" 2>&1
-echo "🔧 $(date +'%F %T') Очистка завершена." | tee -a "$LOG_FILE"
-find "home/backups/postgresql" -type d -mtime +$RETENTION_DAYS -exec rm -rf {} \; >> "$LOG_FILE" 2>&1
+echo "🧹 $(date +'%F %T') Удаляем папки с бэкапами старше $RETENTION_DAYS дней..." | tee -a "$LOG_FILE"
+find "/home/backups/postgresql" -maxdepth 1 -mindepth 1 -type d -mtime +$RETENTION_DAYS -exec rm -rf {} \; -print >> "$LOG_FILE" 2>&1
+echo "✅ Очистка завершена." | tee -a "$LOG_FILE"
 
 echo "❤️ $(date +'%F %T') Backup скрипт завершён успешно. Лог: $LOG_FILE" | tee -a "$LOG_FILE"
