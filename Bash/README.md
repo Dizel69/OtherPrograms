@@ -35,3 +35,15 @@
 ` backapp_db.sh ` - дамп базы данных PostgreSQL;
 
 ` multi_backapp_db ` - дамп баз данных PostgreSQL;
+
+` update_monitor.sh ` - мониторинг обновления системы;
+
+` xsession_monitor.sh ` - мониторинг входа в графическую систему;
+
+` password_validator.sh ` - проверка монитора на сложность;
+
+` disk_space_allert.sh ` - скрипт по уведомлению на почту, если диск занят более чем на 90%;
+
+` apt_cleanapp.sh ` - автоматическая очистка системы пакетов APT с логированием;
+
+`  `
