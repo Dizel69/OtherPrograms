@@ -6,29 +6,36 @@ import random
 INPUT_FILE = "main.json"
 OUTPUT_FILE = "catalog.csv"
 
-def parse_categories(categories, results):
+def parse_categories(categories, results, parents=None):
     """
-    Рекурсивный парсер категорий.
+    Рекурсивный парсер категорий с сохранением вложенности.
     """
-    for cat in categories:
-        name = cat.get("name", "")
-        url = cat.get("url", "")
+    if parents is None:
+        parents = []
 
-        # если url относительный — добавляем домен
+    for cat in categories:
+        name = cat.get("name", "").strip()
+        if not name:
+            continue
+
+        # формируем полное имя: Родитель. Ребенок. Внук
+        full_name = ". ".join(parents + [name])
+
+        url = cat.get("url", "")
         if url.startswith("/"):
             url = "https://www.wildberries.ru" + url
 
         # добавляем запись
         results.append({
-            "name": name,
+            "name": full_name,
             "url": url,
             "sku": 0,
             "priority": random.randint(1, 4)
         })
 
         # рекурсивно обходим детей
-        if "childs" in cat:
-            parse_categories(cat["childs"], results)
+        if "childs" in cat and isinstance(cat["childs"], list):
+            parse_categories(cat["childs"], results, parents + [name])
 
 
 def main():
@@ -39,7 +46,7 @@ def main():
     results = []
     parse_categories(data, results)
 
-    # пишем в CSV
+    # пишем в CSV (разделитель — таб)
     with open(OUTPUT_FILE, "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=["name", "url", "sku", "priority"], delimiter="\t")
         writer.writeheader()
